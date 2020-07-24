@@ -3,9 +3,9 @@ var generateBtn = document.querySelector("#generate");
 var lettersLower = "abcdefghijklmnopqrstuvwxyz".split("");
 var lettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numbers = "123456789".split("");
-var specialChar = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~".split("");
+var symbols = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~".split("");
 
-console.log(lettersLower, lettersUpper, numbers, specialChar);
+console.log(lettersLower, lettersUpper, numbers, symbols);
 
 // Get users responses
 
@@ -30,26 +30,58 @@ var userSpecialChar = confirm(
 );
 console.log("If true, special characters in password: " + userSpecialChar);
 
-
-// function to be able to generate a random password based of the values inputed by the user - (pL = length of password, l = lowercase, u = uppercase, n = numbers, c = special characters
-function generatePassword(pL, l, u, n, c) {
-  var myArray = [];
-
+// function to be able to generate a random password based of the values inputed by the user - (pL = length of password, l = lowercase, u = uppercase, n = numbers, s = symbols
+function generatePassword(pL, l, u, n, s) {
+  // var passAllArray = [lettersLower, lettersUpper, numbers, symbols];
+  var passAllArray = [];
+  // var passwordArray = [];
   if (pL >= 8 && pL <= 128) {
-    if (l === true) {
-      for (var i = 0; i < lettersLower.length; i++);{
-        lettersLower = myArray
-        console.log("this should show the array for lowercase letters: " + myArray);
+    console.log("this is the passAllArray with all options: ", passAllArray);
+  }
 
-      }
+  if (l === true) {
+    passAllArray.push(lettersLower);
 
+    console.log(
+      "If everything true till this point, this is the password array with lowercase letters: ",
+      passAllArray
+    );
+  }
 
-    }
+  if (u === true) {
+    passAllArray.push(lettersUpper);
+    console.log(
+      "If everything true till this point, This passAllArray should have lower and upper letters: ",
+      passAllArray
+    );
+  }
+
+  if (n === true) {
+    passAllArray.push(numbers);
+    console.log(
+      "If everything true till this point, this passAllArray should have lower, upper & numbers: ",
+      passAllArray
+    );
+  }
+
+  if (s === true) {
+    passAllArray.push(symbols);
+    console.log(
+      "If everything true till this point, this passAllArry should have all lower, upper, numers, & symbols arrays: ",
+      passAllArray
+    );
   }
 }
 
-generatePassword(userLengthPw, userLettersLower, userLettersUpper, userNumbers, userSpecialChar)
 
+
+generatePassword(
+  userLengthPw,
+  userLettersLower,
+  userLettersUpper,
+  userNumbers,
+  userSpecialChar
+);
 
 // Write password to the #password input
 function writePassword() {
