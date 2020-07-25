@@ -1,0 +1,7 @@
+.preventDefault() - keeps the information inputed from disappearing as default will get rid of input
+
+.stopPropagation() - stops the bubbling up of effects towards parents elements
+
+event.target.matches - where target tells us which "btn" is pressed 
+
+Local Storage - saves what happens on the website - local.Storage.setItem("key name", value) & local.Storage.getItem("key name", value) and 
