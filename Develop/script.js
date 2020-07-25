@@ -13,32 +13,33 @@ console.log(
   symbols
 );
 
-// Get users responses
+// // Get users responses
 function getPasswordOptions() {
   var userLengthPw = prompt(
-    "How long would you like your password to be? Must be at least 8 characters long."
+    "How long would you like your password to be? Must between 8 and 128 characters long."
   );
+
+  if (userLengthPw < 8 || userLengthPw > 128) {
+    userLengthPw = prompt(
+      "Do you know how to read? I said between 8 and 128 you fool!"
+    );
+  }
 
   var userLettersLower = confirm(
     "Would you like lowercase letters in your password? (cancel for no, ok for yes)"
   );
-  console.log(
-    "If true, lowercase letters in your password: " + userLettersLower
-  );
+
   var userLettersUpper = confirm(
     "Would you like UPPERCASE letters in your password? (cancel for no, ok for yes)"
   );
-  console.log(
-    "If true, UPPERCASE letters in the password: " + userLettersUpper
-  );
+
   var userNumbers = confirm(
     "Would you like numbers in your password? (cancel for no, ok for yes)"
   );
-  console.log("If true, numbers in password: " + userNumbers);
+
   var userSymbols = confirm(
     "Would you like special characters in your password? (cancel for no, ok for yes)"
   );
-  console.log("If true, special characters in password: " + userSymbols);
 
   var passwordOptions = {
     userLengthPw: userLengthPw,
@@ -47,106 +48,57 @@ function getPasswordOptions() {
     userNumbers: userNumbers,
     userSymbols: userSymbols,
   };
+
   console.log(
     "These are the user requested password options: ",
     passwordOptions
   );
+
   return passwordOptions;
 }
 
-// getRandom function
-function getRandom() {
-  var randomPassword = getPasswordOptions();
-  for (var i = 0; i < passwordOptions; i++) {
-    var randomPassword =
-      possiblePassword[Math.floor(Math.random() * passwordOptions.length)];
-    console.log("This is the random characters: ", randomPassword);
-  }
-}
-
 function generatePassword() {
-  var userOptions = getPasswordOptions();
-  var result = [];
+  var userOptions = getPasswordOptions(); //taking passwordOptions as an object that has the user inputs stored
+  console.log("userOptions: ", userOptions);
   var possiblePassword = []; //stores the array types of characters to include the final password
-  var gauranteedCharacters = []; //Create a new array of types of characters to include in final password
 
   if (userOptions.userLettersLower) {
     possiblePassword = possiblePassword.concat(lettersLower);
-    gauranteedCharacters.push(getRandom(lettersLower));
-    console.log(lettersLower);
+    console.log("lettersLower: ", lettersLower);
   }
   if (userOptions.userLettersUpper) {
     possiblePassword = possiblePassword.concat(lettersUpper);
-    gauranteedCharacters.push(getRandom(lettersUpper));
-    console.log(lettersUpper);
+    console.log("lettersUpper: ", lettersUpper);
   }
   if (userOptions.userNumbers) {
     possiblePassword = possiblePassword.concat(numbers);
-    gauranteedCharacters.push(getRandom(numbers));
-    console.log(numbers);
+    console.log("numbers: ", numbers);
   }
   if (userOptions.userSymbols) {
     possiblePassword = possiblePassword.concat(symbols);
-    gauranteedCharacters.push(getRandom(symbols));
-    console.log(symbols);
+    console.log("symbols: ", symbols);
   }
+  console.log(possiblePassword);
+
+  return getRandom(userOptions.userLengthPw, possiblePassword);
 }
 
-// function to be able to generate a random password based of the values inputed by the user - (pL = length of password, l = lowercase, u = uppercase, n = numbers, s = symbols
-// function generatePassword() {
-//   // var passAllArray = [lettersLower, lettersUpper, numbers, symbols];
-//   var options = getPasswordOptions();
-
-//   var passwordResult = [];
-
-//   return passAllArray;
-
-//   if (l === true) {
-//     passAllArray.push(lettersLower);
-
-//     console.log(
-//       "If everything true till this point, this is the password array with lowercase letters: ",
-//       passAllArray
-//     );
-//   }
-
-//   if (u === true) {
-//     passAllArray.push(lettersUpper);
-//     console.log(
-//       "If everything true till this point, This passAllArray should have lower and upper letters: ",
-//       passAllArray
-//     );
-//   }
-
-//   if (n === true) {
-//     passAllArray.push(numbers);
-//     console.log(
-//       "If everything true till this point, this passAllArray should have lower, upper & numbers: ",
-//       passAllArray
-//     );
-//   }
-
-//   if (s === true) {
-//     passAllArray.push(symbols);
-//     console.log(
-//       "If everything true till this point, this passAllArry should have all lower, upper, numers, & symbols arrays: ",
-//       passAllArray
-//     );
-//   }
-// }
-
-// console.log(
-//   "This is the character sets that the user has selected ",
-//   passwordArray
-// );
-
-// generatePassword(
-//   userLengthPw,
-//   userLettersLower,
-//   userLettersUpper,
-//   userNumbers,
-//   userSpecialChar
-// );
+// getRandom function
+function getRandom(userLength, possiblePassword) {
+  console.log("userLength of password: ", userLength);
+  console.log("possiblePassword: ", possiblePassword);
+  var strPossiblePassword = possiblePassword.join("");
+  console.log("string possiblePassword ", strPossiblePassword);
+  var randomPassword = "";
+  for (var i = 0; i < userLength; i++) {
+    randomPassword += strPossiblePassword.charAt(
+      Math.floor(Math.random() * strPossiblePassword.length)
+    );
+  }
+  console.log("This is the random characters: ", randomPassword);
+  console.log("randomPassword.length: ", randomPassword.length);
+  return randomPassword;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -157,4 +109,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", getPasswordOptions);
+generateBtn.addEventListener("click", writePassword);
