@@ -23,22 +23,38 @@ function getPasswordOptions() {
     userLengthPw = prompt(
       "Do you know how to read? I said between 8 and 128 you fool!"
     );
-  } 
+  }
 
   var userLettersLower = confirm(
-      "Would you like lowercase letters in your password? (cancel for no, ok for yes)"
-    );
+    "Would you like lowercase letters in your password? (Cancel for no, OK for yes)"
+  );
 
   var userLettersUpper = confirm(
-      "Would you like UPPERCASE letters in your password? (cancel for no, ok for yes)"
-    );
+    "Would you like UPPERCASE letters in your password? (Cancel for no, OK for yes)"
+  );
 
   var userNumbers = confirm(
-      "Would you like numbers in your password? (cancel for no, ok for yes)"
-    );
+    "Would you like numbers in your password? (Cancel for no, OK for yes)"
+  );
 
-  var userSymbols = confirm("Would you like special characters in your password? (cancel for no, ok for yes)"
+  var userSymbols = confirm(
+    "Would you like special characters in your password? (Cancel for no, OK for yes)"
+  );
+
+  if (
+    userLettersLower === false &&
+    userLettersUpper === false &&
+    userNumbers === false &&
+    userSymbols === false
+  ) {
+    console.log(
+      "You didnt pick any characters for your password, what else am I supposed to show you?? You waste my time? I waste your time. Now your gonna have to sit there and listen to my story... oh wait, this is taking up even more of my time! How about you just click Generate Password again and click okay on some character sets, would you!!"
     );
+    alert(
+      "Wasting my time are we? Well how about you inspect me to see your password... "
+    );
+    // returning writePassword here to show that there was nothing entered to write password and to also not get an error while throwing that easter egg console.log in the code for fun!
+    return writePassword;
   }
 
   var passwordOptions = {
