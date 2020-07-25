@@ -47,15 +47,20 @@ function getPasswordOptions() {
     userNumbers === false &&
     userSymbols === false
   ) {
+    // some fun code!
     console.log(
-      "You didnt pick any characters for your password, what else am I supposed to show you?? You waste my time? I waste your time. Now your gonna have to sit there and listen to my story... oh wait, this is taking up even more of my time! How about you just click Generate Password again and click okay on some character sets, would you!!"
+      "*************Ah so you want to know why you have a ghost password, well read the below code and I think youll get why! Click the Generate Password button and fill out some OK's to those character sets, bring your password to 'life' !!***********"
     );
     alert(
-      "Wasting my time are we? Well how about you inspect me to see your password... "
+      "You have a ghost password that will never show.... Confused? Inspect me to find out..."
     );
     // returning writePassword here to show that there was nothing entered to write password and to also not get an error while throwing that easter egg console.log in the code for fun!
     return writePassword;
   }
+  // some fun code!
+  console.log(
+    "If your reading this that means that you answered the prompts correctly! You don't have a ghost password! Unclear to this message? Try the button again and see if you can figure it out (hint: wonder what a password would be with 0 characters?)"
+  );
 
   var passwordOptions = {
     userLengthPw: userLengthPw,
