@@ -59,7 +59,7 @@ function getPasswordOptions() {
   }
   // some fun code!
   console.log(
-    "If your reading this that means that you answered the prompts correctly! You don't have a ghost password! Unclear to this message? Try the button again and see if you can figure it out (hint: wonder what a password would be with 0 characters?)"
+    "If your reading this that means that you answered the prompts correctly! You don't have a ghost password! Unclear to this message? Try the button again and see if you can figure it out (hint: wonder what a password would be if it had to pick from 0 characters?)"
   );
 
   var passwordOptions = {
