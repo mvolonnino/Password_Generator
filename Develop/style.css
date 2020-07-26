@@ -10,6 +10,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: rgb(65, 47, 47);
 }
 
 body {
@@ -28,6 +29,10 @@ header {
   padding: 20px;
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
+}
+
+h1 {
+  color: rgb(193, 44, 44);
 }
 
 .card {
